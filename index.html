@@ -1,18 +1,50 @@
-<!DOCTYPE html>
+
+
+
+
 
 <html>
 
     <head>
+        <meta charset="UTF-8">
 
-        <title>フーリエ解析＿フーリエ級数の基本的性質（第４章）</title>
+        <script type="text/javascript"　src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+
+    <body>
+        <title>フーリエ級数とは？</title>
 
         <center>
-          　P34~
+          　定義
+          \[
+            f(x) = \frac{ a_{0} }{2} + \sum_{n=1}^{\infty} ( a_{n}  \cos\frac{n{\pi}x}{l} + b_{n} \sin\frac{n{\pi}x}{l} )
+          \]
+            <br>
+
+            なんと\( f(x)= x \)みたいにキレイな式だろうと\( f(x)= x^{100} - x^{7} + x^{-3} + 2 \)みたいにごちゃごちゃしてても↑の式によって\(sin\)と\(cos\)の式によって近似できるのです。<br>
+            nが大きい方が近似の精度が高いです。
+
+            <br><br>
+
+            追記（とばしてください）<br>
+            ↑の定義に出てくる\(f(x)\)は周期関数である。
+            あるT>0があって、全てのx∈Rに対して\(f(x+T) = f(x)\)であるとき、\(f(x)\)は周期Tの関数であるという。<br>
+
+
+            Q「\(f(x)\)って周期関数じゃなくね？」<br>
+            A \(f(x)= x^{2} (-\pi \le x \le \pi ) \)のような範囲に\(f(x)\)をとって考えるので大丈夫です。
+
         </center>
 
-        <meta charset="utf-8">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">]
+            
+
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
         <link rel="stylesheet" href="layout.css">
 
@@ -20,37 +52,11 @@
 
     </head>
 
-    <body>
+
         <center>
 
-        <!-- テキストボタンの場合 
-            <p>
-                <a onClick="sound();">
-                    <img src="./button.png" width="280" height="80" alt="クリックすると音が鳴ります。" title="クリックすると音が鳴ります。">
-                </a>
-            </p>
-       -->
-
-    <!--
-            <h1>本を選ぶ</h1>
-            
-                <table border>
-                  <tr>
-                    <th>ああああ</th>
-                    <th>県庁所在地</th>
-                  </tr>
-                  <tr>
-                    <td>茨城県</td>
-                    <td>水戸市</td>
-                  </tr>
-                  <tr>
-                    <td>栃木県</td>
-                    <td>宇都宮市</td>
-                  </tr>
-                </table>
-    -->        
-
-            <a href="math.html"><img src="https://images-na.ssl-images-amazon.com/images/I/41xO4CwmGNL._SX349_BO1,204,203,200_.jpg" alt="次へ"></a>
+     
+            <a href="math.html">参考文献<img src="https://images-na.ssl-images-amazon.com/images/I/41xO4CwmGNL._SX349_BO1,204,203,200_.jpg" alt="次へ"></a>
 
 
             <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;">
