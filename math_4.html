@@ -1,0 +1,56 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+
+        <script type="text/javascript"　src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+
+    <body>
+        <title>フーリエ級数の性質</title>
+
+        <center>
+          　定義
+          \[
+
+          (f,g)_{L_{2}(I)} := \int_a^b f(x)\overline{ g(x) } dx
+
+
+            
+          \]
+            <br>
+
+            なんと\( f(x)= x \)みたいにキレイな式だろうと\( f(x)= x^{100} - x^{7} + x^{-3} + 2 \)みたいにごちゃごちゃしてても↑の式によって\(sin\)と\(cos\)の式によって近似できるのです。<br>
+            nが大きい方が近似の精度が高いです。
+
+            <br><br>
+
+            追記（とばしてください）<br>
+            ↑の定義に出てくる\(f(x)\)は周期関数である。
+            あるT>0があって、全てのx∈Rに対して\(f(x+T) = f(x)\)であるとき、\(f(x)\)は周期Tの関数であるという。<br>
+
+
+            Q「\(f(x)\)って周期関数じゃなくね？」<br>
+            A \(f(x)= x^{2} (-\pi \le x \le \pi ) \)のような範囲に\(f(x)\)をとって考えるので大丈夫です。
+
+        </center>
+
+
+            
+        <a href="math_4.html"><b>フーリエ級数の基本的性質</b></a>
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="layout.css">
+
+        <script type="text/javascript" src="puzzle.js"></script>
+
+    </head>     
+
+    </body>
+
+</html>
