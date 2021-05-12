@@ -10,6 +10,9 @@
 
 
 @media screen and (max-width: 479px) { /*ウィンドウ幅が最大479pxまでの場合に適用*/
+    main {
+		width: 100%;
+	}
 
 }
 
