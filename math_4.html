@@ -37,9 +37,36 @@
 
 
             <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333;">
+                ↓はよく使う不等式<br>
+                補題（コーシー・シュワルツの不等式）<br>
+                f,g:区分的連続<br>
+                \[
+                \begin{align}
+                
+                |(f,g)_{L^{2}(I)}| \leq  \| f \|_{L^{2}(I)} \| g \|_{L^{2}(I)} \\\\\
+                〜証明の方針〜　\\\
+                0 \leq \int_a^b | f(x) + te^{i\alpha}g(x) |^{2} dx \\
+                を式変形していくと、 \\
+                tに関する2次方程式となり、判別式を考えて解ける。
 
+                \end{align}
+                \]
+
+                また、この式より
+                \[
+                \|f + g \|_{L^{2}(I)} \leq \|f \|_{L^{2}(I)} + \|g \|_{L^{2}(I)}
+                \]
+                が導かれる（三角不等式）
             </div>
             
+fを三角関数系の線型結合で\(L^{2}\)ノルムを使って近似をする際、フーリエ係数が最良になる（\(L^{2}\)最良近似）
+            <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333;">
+                任意のN（自然数）と任意の複素数列 \( \{d_{n} \}^{N}_{n=-N} \) に対して、<br>
+                \[
+                \| f - \Sigma^{N}_{n=-N}\sqrt{2\pi}c_{n}[f]\varphi_{n} \|^{2}_{L^{2}(-\pi,\pi)}  \leq \| f - \Sigma^{N}_{n=-N}\sqrt{2\pi}d_{n}[f]\varphi_{n} \|^{2}_{L^{2}(-\pi,\pi)}
+                \]
+                
+            </div>
         </center>
 
 
