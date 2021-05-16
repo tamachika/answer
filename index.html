@@ -1,79 +1,48 @@
-<!DOCTYPE html>
-<html lang="ja">
 
+
+
+
+
+<html>
 
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 
         <script type="text/javascript"　src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
 
-    </head>  
+        <title>フーリエ級数とは？</title>
+    </head>
+
     <body>
-        <title>フーリエ級数の性質</title>
-
-近似がうまくできること
-
-
-
-        <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333; text-align:center">
-          　定義（ \( L_{2}(I) \)内積・ \( L_{2}(I) \)ノルム）
-          \[
-
-          (f,g)_{L_{2}(I)} := \int_a^b f(x)\overline{ g(x) } dx　\\
-
-
-          \| f \|_{L_{2}(I)} := \sqrt{ \int_a^b |f(x)|_{2} dx }
-
-
-          \]
-            
-            \(L^{2}\)ノルムは関数fの大きさを測るイメージ<br><br>
-            \(L^{2}\)内積はfとgの角度を測るイメージ<br>
-            \( (f,g)_{L^{2}(I)} := \int_a^b f(x)\overline{ g(x) } dx = 0 \) のとき、fとgは\(L^{2}\)において<b>直交</b>するという<br>
-            \( \varphi_{n}(x) := \frac{1}{ \sqrt{2\pi} }e^{inx} \)　と定義するとき<br>
-            \( (\varphi_{m}, \varphi_{n})_{L^{2}(-\pi,\pi)} = \delta(m,n) (m,n \in \mathbb{Z} ) \)　となり、関数列\( {f_{n}(x)}^{\infty}_{n=1} \)は\(L^{2}\)で<b>正規直交系</b>をなすという。<br>
-
-            注意<br>
-            たいてい「キレイ」な関数なのでルベーグ積分の値＝リーマン積分の値　となり、特別な問題でない限り、今まで通りリーマン積分で計算できる。<br>
-            正規直交基底と言わず、正規直交系と言ったのは、まだファイたちが基底になるかが現段階ではわからないから。（ホントはなるんだろうけど、確認できでない）
-
-        </div> 
-
-↓はよく使う不等式
-        <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333; text-align:center">
-            補題（コーシー・シュワルツの不等式）<br>
-            f,g:区分的連続<br>
-            \[
-            \begin{align}
-            
-            |(f,g)_{L^{2}(I)}| \leq  \| f \|_{L^{2}(I)} \| g \|_{L^{2}(I)} \\\\\
-            〜証明の方針〜　\\\
-            0 \leq \int_a^b | f(x) + te^{i\alpha}g(x) |^{2} dx \\
-            を式変形していくと、 \\
-            tに関する2次方程式となり、判別式を考えて解ける。
-
-            \end{align}
-            \]
-
-            また、この式より
-            \[
-            \|f + g \|_{L^{2}(I)} \leq \|f \|_{L^{2}(I)} + \|g \|_{L^{2}(I)}
-            \]
-            が導かれる（三角不等式）
-        </div>
         
-fを三角関数系の線型結合で\(L^{2}\)ノルムを使って近似をする際、フーリエ係数が最良になる（\(L^{2}\)最良近似）
-        <div style="padding: 10px; margin-bottom: 10px; border: 1px dotted #333333; text-align:center">
-            任意のN（自然数）と任意の複素数列 \( \{d_{n} \}^{N}_{n=-N} \) に対して、<br>
-            \[
-            \| f - \Sigma^{N}_{n=-N}\sqrt{2\pi}c_{n}[f]\varphi_{n} \|^{2}_{L^{2}(-\pi,\pi)}  \leq \| f - \Sigma^{N}_{n=-N}\sqrt{2\pi}d_{n}[f]\varphi_{n} \|^{2}_{L^{2}(-\pi,\pi)}
-            \]
+
+        <center>
+          　定義
+          \[
+            f(x) = \frac{ a_{0} }{2} + \sum_{n=1}^{\infty} ( a_{n}  \cos\frac{n{\pi}x}{l} + b_{n} \sin\frac{n{\pi}x}{l} )
+          \]
+            <br>
+
+            なんと\( f(x)= x \)みたいにキレイな式だろうと\( f(x)= x^{100} - x^{7} + x^{-3} + 2 \)みたいにごちゃごちゃしてても↑の式によって\(sin\)と\(cos\)の式によって近似できるのです。<br>
+            nが大きい方が近似の精度が高いです。
+
+            <br><br>
+
+            追記（とばしてください）<br>
+            ↑の定義に出てくる\(f(x)\)は周期関数である。
+            あるT>0があって、全てのx∈Rに対して\(f(x+T) = f(x)\)であるとき、\(f(x)\)は周期Tの関数であるという。<br>
+
+
+            Q「\(f(x)\)って周期関数じゃなくね？」<br>
+            A \(f(x)= x^{2} (-\pi \le x \le \pi ) \)のような範囲に\(f(x)\)をとって考えるので大丈夫です。
+
+        </center>
+
+
             
-        </div>
 
 
 
@@ -83,7 +52,16 @@ fを三角関数系の線型結合で\(L^{2}\)ノルムを使って近似をす�
 
         <script type="text/javascript" src="puzzle.js"></script>
 
-   
+
+
+     <a href="math_4.html">フーリエ級数の基本的性質</a>
+
+
+        <center>
+            参考文献
+            <table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:504px;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:240px"><a href="https://hb.afl.rakuten.co.jp/ichiba/1c7c56af.bfcf20b6.1c7c56b0.5f84d53f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F16363236%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"  ><img src="https://hbb.afl.rakuten.co.jp/hgb/1c7c56af.bfcf20b6.1c7c56b0.5f84d53f/?me_id=1213310&item_id=20043339&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fbook%2Fcabinet%2F0678%2F9784864810678.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px" alt="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]" title="[商品価格に関しましては、リンクが作成された時点と現時点で情報が変更されている場合がございます。]"></a></td><td style="vertical-align:top;width:248px;"><p style="font-size:12px;line-height:1.4em;text-align:left;margin:0px;padding:2px 6px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/1c7c56af.bfcf20b6.1c7c56b0.5f84d53f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F16363236%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"  >フーリエ解析の基礎と応用 （新・数理/工学ライブラリ[応用数学]　4） [ 倉田　和浩 ]</a><br><span >価格：2310円（税込、送料無料)</span> <span style="color:#BBB">(2021/5/11時点)</span></p><div style="margin:10px;"><a href="https://hb.afl.rakuten.co.jp/ichiba/1c7c56af.bfcf20b6.1c7c56b0.5f84d53f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F16363236%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"  ><img src="https://static.affiliate.rakuten.co.jp/makelink/rl.svg" style="float:left;max-height:27px;width:auto;margin-top:0"></a><a href="https://hb.afl.rakuten.co.jp/ichiba/1c7c56af.bfcf20b6.1c7c56b0.5f84d53f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F16363236%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"  ><div style="float:right;width:41%;height:27px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:500;line-height:27px;margin-left:1px;padding: 0 12px;border-radius:16px;cursor:pointer;text-align:center;">楽天で購入</div></a></div></td></tr></table></div><br><p style="color:#000000;font-size:12px;line-height:1.4em;margin:5px;word-wrap:break-word"></p></td></tr></table>            
+        </center>
+                
 
     </body>
 
