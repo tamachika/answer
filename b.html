@@ -1,0 +1,68 @@
+<!-- クライアント側のHTML -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文章表示</title>
+</head>
+<body>
+    <h1>文章の評価</h1>
+    <div id="result">
+        <p>以下の文章を評価してください：</p>
+        <p id="sentence">これは素晴らしい文章です！</p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+    <div id="voteCounts">
+        <p>Yes: <span id="yesCount">0</span></p>
+        <p>No: <span id="noCount">0</span></p>
+    </div>
+
+    <script>
+        // ユーザーの投票をサーバーに送信する関数を追加
+        function sendVote(vote) {
+            const userId = getUserId();
+            fetch('/record-vote.php', {
+                method: 'POST',
+                body: JSON.stringify({ userId, vote }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // 投票成功時の処理
+                    // 例: ボタンを無効にする
+                } else {
+                    // 投票エラー時の処理
+                }
+            })
+            .catch(error => {
+                // エラーハンドリング
+            });
+        }
+
+        // 他のコードは前回の回答を参照
+        // ...
+
+        yesButton.addEventListener("click", function () {
+            if (!hasVoted && !isDisplayed) {
+                yesCount++;
+                sendVote("Yes"); // サーバーにYesを送信
+                updateVoteCounts();
+                checkAndDisplay();
+            }
+        });
+
+        noButton.addEventListener("click", function () {
+            if (!hasVoted && !isDisplayed) {
+                noCount++;
+                sendVote("No"); // サーバーにNoを送信
+                updateVoteCounts();
+                checkAndDisplay();
+            }
+        });
+    </script>
+</body>
+</html>
