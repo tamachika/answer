@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文章表示</title>
+</head>
+<body>
+    <h1>文章の評価</h1>
+    <div id="result">
+        <p>以下の文章を評価してください：</p>
+        <p id="sentence">これは素晴らしい文章です！</p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+    <div id="voteCounts">
+        <p>Yes: <span id="yesCount">0</span></p>
+        <p>No: <span id="noCount">0</span></p>
+    </div>
+
+    <script>
+        const userId = getUserId();
+        let hasVoted = checkIfUserHasVoted();
+        let yesCount = 0;
+        let noCount = 0;
+        let isDisplayed = false;
+
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+        const resultDiv = document.getElementById("result");
+        const sentenceElement = document.getElementById("sentence");
+        const yesCountDisplay = document.getElementById("yesCount");
+        const noCountDisplay = document.getElementById("noCount");
+
+        if (hasVoted) {
+            yesButton.disabled = true;
+            noButton.disabled = true;
+        }
+
+        yesButton.addEventListener("click", function () {
+            if (!hasVoted && !isDisplayed) {
+                yesCount++;
+                storeUserVote();
+                updateVoteCounts();
+                checkAndDisplay();
+            }
+        });
+
+        noButton.addEventListener("click", function () {
+            if (!hasVoted && !isDisplayed) {
+                noCount++;
+                storeUserVote();
+                updateVoteCounts();
+                checkAndDisplay();
+            }
+        });
+
+        function checkAndDisplay() {
+            if (!isDisplayed) {
+                const totalVotes = yesCount + noCount;
+                const yesPercentage = (yesCount / totalVotes) * 100;
+
+                if (yesPercentage >= 50) {
+                    isDisplayed = true;
+                    sentenceElement.style.display = "block";
+                }
+            }
+        }
+
+        function getUserId() {
+            return Math.random().toString(36).substring(2, 15);
+        }
+
+        function storeUserVote() {
+            const votedUsers = getVotedUsers();
+            votedUsers.push(userId);
+            setCookie("votedUsers", JSON.stringify(votedUsers));
+            hasVoted = true;
+            yesButton.disabled = true;
+            noButton.disabled = true;
+        }
+
+        function checkIfUserHasVoted() {
+            const votedUsers = getVotedUsers();
+            return votedUsers.includes(userId);
+        }
+
+        function getVotedUsers() {
+            const votedUsersCookie = getCookie("votedUsers");
+            return votedUsersCookie ? JSON.parse(votedUsersCookie) : [];
+        }
+
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const cookieName = name + "=";
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(cookieName) === 0) {
+                    return cookie.substring(cookieName.length, cookie.length);
+                }
+            }
+            return "";
+        }
+
+        function updateVoteCounts() {
+            // 投票数を表示する関数
+            yesCountDisplay.textContent = yesCount;
+            noCountDisplay.textContent = noCount;
+        }
+
+        // ページロード時に投票数を表示
+        updateVoteCounts();
+    </script>
+</body>
+</html>
