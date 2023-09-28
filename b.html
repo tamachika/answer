@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>文章表示</title>
+    <style>
+        /* スタイルを追加することができます */
+        .success {
+            color: green;
+        }
+        .failure {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>文章の評価</h1>
+    <ul>
+        <li>
+            <strong>スカルガルー+みみとびねずみ</strong>
+            <span class="success">〇→エビルハムスター</span>
+        </li>
+        <li>
+            <strong>スカルガルー+ももんじゃ</strong>
+            <span class="success">〇→ダックスビル</span>
+        </li>
+        <!-- 他の項目も同様に追加 -->
+    </ul>
     <div id="result">
         <p>以下の文章を評価してください：</p>
         <p id="sentence">これは素晴らしい文章です！</p>
